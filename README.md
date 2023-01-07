@@ -10,5 +10,7 @@ npm install
 
 Levantar el servidor con el comando:
 
+```
 npx nodemon server/server o
 nodemon server/server
+```
