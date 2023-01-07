@@ -44,5 +44,13 @@ io.on('connection', (client) => {
 
     });
 
+    //Mensajes privados. Data debe contener id del usuario al que se mandará
+    client.on('mensajePrivado', data => {
+        //La persona que manda el mensaje
+        let persona = usuarios.getPersona( client.id );
+        //Un usuario en particular
+        client.broadcast.to(data.para).emit( 'mensajePrivado', crearMensaje( persona.nombre, data.mensaje ) );
+
+    });
 
 });
