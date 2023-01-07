@@ -1,7 +1,22 @@
 var socket = io();
 
+var params = new URLSearchParams( window.location.search );
+
+if( !params.has('nombre') ){
+    window.location = 'index.html';
+    throw new Error('El nombre es necesario');
+}
+
+var usuario = {
+    nombre: params.get('nombre')
+}
+
 socket.on('connect', function() {
     console.log('Conectado al servidor');
+
+    socket.emit('entrarChat', usuario, function( resp ){
+        console.log('Usuarios conectados', resp);
+    });
 });
 
 // escuchar
@@ -14,7 +29,7 @@ socket.on('disconnect', function() {
 
 // Enviar información
 socket.emit('enviarMensaje', {
-    usuario: 'Fernando',
+    usuario: 'Sebastián',
     mensaje: 'Hola Mundo'
 }, function(resp) {
     console.log('respuesta server: ', resp);
