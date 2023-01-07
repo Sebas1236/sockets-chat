@@ -15,10 +15,20 @@ function renderizarUsuarios(personas) {
     html += '</li>';
 
     for (var i = 0; i < personas.length; i++) {
-        html+='<li>';
-        html+='    <a data-id='+personas[i].id+' href="javascript:void(0)"><img src="assets/images/users/'+[i]+'.jpg'+'" alt="user-img" class="img-circle"> <span>'+personas[i].nombre+' <small class="text-success">online</small></span></a>';
-        html+='</li>';
+        html += '<li>';
+        html += '    <a data-id="' + personas[i].id + '" href="javascript:void(0)"><img src="assets/images/users/' + [i] + '.jpg' + '" alt="user-img" class="img-circle"> <span>' + personas[i].nombre + ' <small class="text-success">online</small></span></a>';
+        html += '</li>';
     }
 
     divUsuarios.html(html);
 };
+
+//* Listeners
+divUsuarios.on('click', 'a', function () {
+
+    var id = $(this).data('id');
+
+    if (id) {
+        console.log(id);
+    }
+});
