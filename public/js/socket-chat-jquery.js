@@ -8,6 +8,7 @@ var formEnviar = $('#formEnviar');
 var txtMensaje = $('#txtMensaje');
 var divChatbox = $('#divChatbox');
 var divSalaTitulo = $('#divTituloSala');
+var searchInput = $('#searchInput');
 
 //* Funciones para renderizar usuarios
 function renderizarUsuarios(personas) {
@@ -20,7 +21,7 @@ function renderizarUsuarios(personas) {
     html += '</li>';
 
     for (var i = 0; i < personas.length; i++) {
-        html += '<li>';
+        html += '<li class="list-group-item">';
         html += '    <a data-id="' + personas[i].id + '" href="javascript:void(0)"><img src="assets/images/users/' + [i] + '.jpg' + '" alt="user-img" class="img-circle"> <span>' + personas[i].nombre + ' <small class="text-success">online</small></span></a>';
         html += '</li>';
     }
@@ -99,6 +100,22 @@ divUsuarios.on('click', 'a', function () {
         console.log(id);
     }
 });
+
+searchInput.on('input', filterList);
+
+function filterList(){
+    const searchInput2 = document.querySelector('#searchInput');
+    const filter = searchInput2.value.toLowerCase();
+    const listItems = document.querySelectorAll('.list-group-item');
+    listItems.forEach((item) => {
+        let text = item.textContent;
+        if(text.toLowerCase().includes(filter.toLowerCase())){
+            item.style.display = '';
+        }else{
+            item.style.display = 'none';
+        }
+    })
+}
 
 formEnviar.on('submit', function (e) {
 
