@@ -42,7 +42,8 @@ socket.on('disconnect', function() {
 socket.on('crearMensaje', function(mensaje) {
 
     // console.log('Servidor:', mensaje);
-    renderizarMensajes(mensaje);
+    renderizarMensajes(mensaje, false);
+    scrollBottom();
 
 });
 
