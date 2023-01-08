@@ -7,6 +7,7 @@ var divUsuarios = $('#divUsuarios');
 var formEnviar = $('#formEnviar');
 var txtMensaje = $('#txtMensaje');
 var divChatbox = $('#divChatbox');
+var divSalaTitulo = $('#divTituloSala');
 
 //* Funciones para renderizar usuarios
 function renderizarUsuarios(personas) {
@@ -26,6 +27,12 @@ function renderizarUsuarios(personas) {
 
     divUsuarios.html(html);
 };
+
+const renderizarSalaTitulo = () => {
+    var html = '';
+    html += '<h3 class="box-title">Sala de chat <small>'+params.get('sala')+'</small></h3>';
+    divSalaTitulo.html(html);
+}
 
 function renderizarMensajes(mensaje, yo) {
     console.log(mensaje);

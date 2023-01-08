@@ -19,6 +19,7 @@ socket.on('connect', function() {
         // console.log('Usuarios conectados', resp);
         //La respuesta es un arreglo de usuarios
         renderizarUsuarios(resp);
+        renderizarSalaTitulo();
     });
 });
 
