@@ -59,7 +59,7 @@ function renderizarMensajes(mensaje, yo) {
 
         html += '<li class="animated fadeIn">';
         if (mensaje.nombre !== 'Administrador') {
-            html += '    <div class="chat-img"><img src="assets/images/users/1.jpg" alt="user" />';
+            html += '    <div class="chat-img"><img src="assets/images/users/7.jpg" alt="user" />';
         }
         html += '    </div>';
         html += '    <div class="chat-content">';
@@ -98,6 +98,16 @@ divUsuarios.on('click', 'a', function () {
 
     if (id) {
         console.log(id);
+        // window.location.replace(`http://localhost:3000/chat.html?nombre=Sebas&sala=Amigos&id=${id}`);
+        // socket.emit('mensajePrivado', {
+        //     nombre,
+        //     mensaje: txtMensaje.val(),
+        //     para: id,
+        // }, function (mensaje) {
+        //     txtMensaje.val('').focus();
+        //     renderizarMensajes(mensaje, true);
+        //     scrollBottom();
+        // });
     }
 });
 
