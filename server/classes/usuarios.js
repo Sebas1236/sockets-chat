@@ -5,8 +5,8 @@ class Usuarios {
         this.personas = [];
     };
 
-    agregarPersona(id, nombre, sala){
-        let persona = { id, nombre, sala };
+    agregarPersona(id, nombre, sala, img = '0'){
+        let persona = { id, nombre, sala, img };
 
         this.personas.push(persona);
         //Sujeto a cambiar

@@ -1,6 +1,7 @@
 var params = new URLSearchParams(window.location.search);
 var nombre = params.get('nombre');
 var sala = params.get('sala');
+var img = params.get('test');
 
 // referencias de jQuery
 var divUsuarios = $('#divUsuarios');
@@ -22,7 +23,7 @@ function renderizarUsuarios(personas) {
 
     for (var i = 0; i < personas.length; i++) {
         html += '<li class="list-group-item">';
-        html += '    <a data-id="' + personas[i].id + '" href="javascript:void(0)"><img src="assets/images/users/' + [i] + '.jpg' + '" alt="user-img" class="img-circle"> <span>' + personas[i].nombre + ' <small class="text-success">online</small></span></a>';
+        html += '    <a data-id="' + personas[i].id + '" href="javascript:void(0)"><img src="assets/images/users/' + personas[i].img + '.jpg' + '" alt="user-img" class="img-circle"> <span>' + personas[i].nombre + ' <small class="text-success">online</small></span></a>';
         html += '</li>';
     }
 
@@ -51,7 +52,7 @@ function renderizarMensajes(mensaje, yo) {
         html += '        <h5>' + mensaje.nombre + '</h5>';
         html += '        <div class="box bg-light-inverse">' + mensaje.mensaje + '</div>';
         html += '    </div>';
-        html += '    <div class="chat-img"><img src="assets/images/users/0.jpg" alt="user" />';
+        html += `    <div class="chat-img"><img src="assets/images/users/${img}.jpg" alt="user" />`;
         html += '    </div>';
         html += '    <div class="chat-time">' + hora + '</div>';
         html += '</li>';
@@ -59,7 +60,7 @@ function renderizarMensajes(mensaje, yo) {
 
         html += '<li class="animated fadeIn">';
         if (mensaje.nombre !== 'Administrador') {
-            html += '    <div class="chat-img"><img src="assets/images/users/7.jpg" alt="user" />';
+            html += '    <div class="chat-img"><img src="assets/images/users/'+mensaje.img+'.jpg" alt="user" />';
         }
         html += '    </div>';
         html += '    <div class="chat-content">';
@@ -138,6 +139,7 @@ formEnviar.on('submit', function (e) {
     socket.emit('crearMensaje', {
         nombre,
         mensaje: txtMensaje.val(),
+        img,
     }, function (mensaje) {
         txtMensaje.val('').focus();
         renderizarMensajes(mensaje, true);
